@@ -56,6 +56,9 @@ dependencies:
   equatable: ^2.0.5
   reels_viewer: ^1.0.0
   flutter_insta: ^1.0.1
+  banuba_sdk: ^3.0.1
+  banuba_arcloud: ^1.0.3
+  # ve_sdk_flutter: ^0.0.3
 
 dev_dependencies:
   flutter_test:

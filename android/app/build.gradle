@@ -42,6 +42,10 @@ android {
         targetSdk = flutter.targetSdkVersion
         versionCode = flutterVersionCode.toInteger()
         versionName = flutterVersionName
+        ndk {
+            abiFilters 'armeabi-v7a', 'arm64-v8a'
+        }
+
     }
 
     buildTypes {
@@ -53,6 +57,24 @@ android {
     }
 }
 
+dependencies {
+    implementation "com.banuba.sdk:face_tracker:$project.bnb_sdk_version"
+    implementation "com.banuba.sdk:background:$project.bnb_sdk_version"
+    implementation "com.banuba.sdk:lips:$project.bnb_sdk_version"
+    implementation "com.banuba.sdk:skin:$project.bnb_sdk_version"
+}
+
 flutter {
-    source = "../.."
+    source '../..'
+}
+
+task copyEffects {
+    copy {
+        from flutter.source + '/effects'
+        into 'src/main/assets/bnb-resources/effects'
+    }
+}
+
+gradle.projectsEvaluated {
+    preBuild.dependsOn(copyEffects)
 }
